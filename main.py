@@ -55,6 +55,5 @@ def deleting():
         session.delete(book_to_del)
         session.commit()
     return redirect(url_for("front_page"))
-if __name__ == "__main__":
-    app.run(debug=True)
+
 
