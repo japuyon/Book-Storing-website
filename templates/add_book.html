@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white; /* Text color for visibility */
+            background-image: url('https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/671d6bd2-df57-4a8d-8008-bfb78bcef0ec/b6dd5d30-552b-4f6e-b7bc-2b3a385cedec.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 90%; /* Full width on small screens */
+            max-width: 400px; /* Max width on larger screens */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input {
+            margin: 5px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            width: 100%; /* Full width */
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #4CAF50; /* Button color */
+            color: white;
+            width: 100%; /* Full width */
+        }
+
+        button:hover {
+            background-color: #45a049; /* Button hover effect */
+        }
+
+        @media (max-width: 600px) {
+            form {
+                padding: 15px;
+            }
+
+            input, button {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form action="/add" method="POST">
+        <label>Book Name
+            <input name="title" type="text" required>
+        </label>
+        <label>Book Author
+            <input name="author" type="text" required>
+        </label>
+        <label>Rating
+            <input name="rating" type="number" max="10" min="0" required>
+        </label>
+        <button type="submit">Add Book</button>
+    </form>
+</body>
+</html>

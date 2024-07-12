@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book Rating</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            background-image: url('https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/835fe729-afa6-4383-a705-5667745f4fb9/b406eb9c-9141-4e6c-b0e1-7aa2010004b1.png');
+            background-size: contain; /* Change to contain to fit the image */
+            background-repeat: no-repeat;
+            background-position: center top; /* Position to keep head and leg visible */
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .the_form {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h4, p {
+            margin: 10px 0;
+        }
+
+        @media (max-width: 600px) {
+            .the_form {
+                padding: 15px;
+            }
+
+            input, button {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form class="the_form" action="/edit" method="POST">
+        <input type="hidden" name="id" value="{{book.id}}">
+        <h4>Book Name: {{book.title}}</h4>
+        <p>Current Rating: {{book.rating}}</p>
+        <input max="10" min="0" name="new_rating" type="number" placeholder="New Rating" required>
+        <button type="submit">Change Rating</button>
+    </form>
+</body>
+</html>

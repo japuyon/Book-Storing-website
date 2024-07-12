@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: rgb(235, 227, 227);
+            height: 100vh;
+            width: 100%;
+            background-image: url(https://cdn.pixabay.com/photo/2024/04/19/12/13/ai-generated-8706226_640.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .the_main {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            text-align: center; /* Center text */
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-family: cursive;
+            color: rgb(175, 203, 203);
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: red;
+            margin: 10px 0;
+        }
+
+        ul {
+            list-style-type: none; /* Remove default list styling */
+            padding: 0;
+        }
+
+        .each_box {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center items */
+            margin: 10px 0;
+        }
+
+        .each_box form {
+            margin-right: 10px;
+        }
+
+        .book-info {
+            font-size: 1.5rem;
+            font-family: cursive;
+            margin: 0 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: rgb(74, 120, 106);
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            display: inline-block; /* Center the link */
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="the_main">
+        <h1>My Library</h1>
+        {% if the_length == 0 %}
+            <h3>Library is empty</h3>
+        {% else %}
+            <ul>
+                <h3 style="font-family: cursive; color: aquamarine;"><pre>       Book-Name      Author      rating</pre></h3>
+                {% for book in books %}
+                <div class="each_box">
+                    <form action="/delete" method="POST">
+                        <input type="hidden" name="haha" value="{{book.id}}">
+                        <button type="submit">❌</button>
+                    </form>
+                    <li class="book-info">
+                        <pre>{{book.title}}   -   {{book.author}}   -   {{book.rating}}</pre>
+                        <form action="/edit" method="POST" style="display:inline; padding-left: 10%;">
+                            <input type="hidden" name="id" value="{{book.id}}">
+                            <button type="submit">Edit Rating</button>
+                        </form>
+                    </li>
+                </div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <a style="font-weight: 900;" href="/add">Add New Book</a>
+    </div>
+</body>
+</html>
